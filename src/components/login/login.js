@@ -38,10 +38,10 @@ const Login = ({ setLoginUser }) => {
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} placeholder="Enter your Email" onChange={handleChange} /><br></br>
             <input type="password" name="password" value={user.password} placeholder="Enter your Password" onChange={handleChange} /><br></br>
-            <input type="button" onClick={login} />Login
+            <input type="button" value="Login" onClick={login} />
             {/* <div className="button" onClick={login} >Login</div> */}
             <div>or</div>
-            <input type="button" onClick={() => history.push("/register")} />Register (New User First Register)
+            <input type="button" value="Register" onClick={() => history.push("/register")} /> (New User First Register)
             {/* <div className="button" onClick={() => history.push("/register")}>Register</div> */}
         </div>
     )

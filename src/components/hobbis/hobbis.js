@@ -6,39 +6,77 @@ const Hobbis = ({ setHobbis }) => {
 
     const history = useHistory()
 
-    const [user, setUser] = useState({
-        comapny_name: "",
-        experience_of_company: "",
+    const [user_hobbi, setUser] = useState({
+        favoutite_game_name: "",
+        first_game_name: "",
+        second_game_name: "",
+        favourite_book_name: "",
 
     })
 
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
-            ...user,
+            ...user_hobbi,
             [name]: value
         })
 
     }
 
     const Hobbis = () => {
-        axios.post("http://localhost:9002/hobbis", user)
+        user_hobbi.user_id = JSON.parse(
+            localStorage.getItem("user_values")
+        )._id
+        axios.post("http://localhost:9002/hobbis", user_hobbi)
             .then(res => {
-
-                // sethobbis(res.data.user)
-                history.push("/")
+                history.push("/resume")
             })
     }
 
     return (
         <div className="Hobbis" >
+            {console.log("user_hobbi", user_hobbi)}
             <h1>Hobbies</h1>
-            <input type="text" name="first_name" value={user.first_name} placeholder="Enter your Favourite Sports" onChange={handleChange} /><br></br>
-            <input type="text" name="second_name" value={user.second_name} placeholder="Enter your First Game Name" onChange={handleChange} /><br></br>
-            <input type="text" name="third_name" value={user.third_name} placeholder="Enter your Second Game Name" onChange={handleChange} /><br></br>
-            <input type="text" name="book_name" value={user.book_name} placeholder="Enter your Favourite Book Name" onChange={handleChange} /><br></br>
-            <input type="button" onClick={() => history.push("/work_exp")} />Back
-            <input type="button" onClick={() => history.push("/resume")} />Submit
+            <input
+                type="text"
+                name="favoutite_game_name"
+                value={user_hobbi.favourite_game_name}
+                placeholder="Enter your Favourite Sports"
+                onChange={handleChange} />
+            <br></br>
+            <input
+                type="text"
+                name="first_game_name"
+                value={user_hobbi.first_game_name}
+                placeholder="Enter your First Game Name"
+                onChange={handleChange} />
+            <br></br>
+            <input
+                type="text"
+                name="second_game_name"
+                value={user_hobbi.second_game_name}
+                placeholder="Enter your Second Game Name"
+                onChange={handleChange} />
+            <br></br>
+            <input
+                type="text"
+                name="favourite_book_name"
+                value={user_hobbi.favourite_book_name}
+                placeholder="Enter your Favourite Book Name"
+                onChange={handleChange} />
+            <br></br>
+            <input
+                type="button"
+                value="Back"
+                onClick={() => history.push("/work_exp")} />
+            <input
+                type="button"
+                value="Add Data"
+                onClick={Hobbis} />
+            <input
+                type="button"
+                value="Submit"
+                onClick={() => history.push("/resume")} />
 
         </div>
 

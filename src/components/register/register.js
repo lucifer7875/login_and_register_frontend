@@ -45,9 +45,9 @@ const Register = () => {
             <input type="text" name="email" value={user.email} placeholder="your Email" onChange={handleChange} /><br></br>
             <input type="password" name="password" value={user.password} placeholder="your Password" onChange={handleChange} /><br></br>
             <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange} /><br></br>
-            <input type="button" onClick={register} />Register
+            <input type="button" value="Register" onClick={register} />
             <div>or</div>
-            <input type="button" onClick={() => history.push("/login")} />Login
+            <input type="button" value="Login" onClick={() => history.push("/login")} />
 
         </div>
     )
