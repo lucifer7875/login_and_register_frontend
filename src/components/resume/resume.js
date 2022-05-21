@@ -7,7 +7,7 @@ const Resume = ({ setLoginUser }) => {
 
     return (
         <div className="resume">
-            <h1>YOUR RESUME IS SUBMITED</h1>
+            <h1>YOUR DETAILS ARE SUBMITED </h1>
             <div className="button" onClick={() => history.push("/login")}>Logout</div>
             {/* <input type="button" onClick={() => history.push("/login")} />Login */}
         </div>

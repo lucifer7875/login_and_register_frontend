@@ -8,86 +8,88 @@ const Personal_Info = ({ setPersonal_InfoUser }) => {
 
     const history = useHistory()
 
-    const [user, setUser] = useState({
-        name: "",
-        mobile_number: "",
-        age: "",
-        email: "",
+    const [user_info, setUser] = useState({
+        tempname: "",
+        tempmobile_number: "",
+        tempage: "",
+        tempemail: "",
 
     })
 
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
-            ...user,
+            ...user_info,
             [name]: value
         })
 
     }
 
     const personal_info = () => {
-        axios.post("http://localhost:9002/personal_info", user)
+        user_info.user_id = JSON.parse(
+            localStorage.getItem("user_values")
+        )._id
+        axios
+            .post("http://localhost:9002/personal_info", user_info)
             .then((res) => {
-                console.log(res.user)
 
-                setPersonal_InfoUser(res.data.user)
-                history.push("/")
+                history.push("/your_education_info")
             })
     }
 
     console.log(JSON.parse(localStorage.getItem("user_values")))
-    // console.log(JSON.parse(localStorage.getItem("user_values")))
-    // const idField = document.querySelector('[name = "user_id"]')
+    const idField = document.querySelector('[name = "user_id"]')
     // console.log(idField)
 
     return (
         <div className="Personal_Info" >
-            {console.log("User", user)}
+            {console.log("User_info", user_info)}
             <h1>Personal Info</h1>
             <input
                 type="text"
-                name="name"
-                value={user.name}
+                name="tempname"
+                value={user_info.tempname}
                 placeholder="Enter your Name"
                 onChange={handleChange}
             />
             <br></br>
             <input
                 type="number"
-                name="mobile_number"
-                value={user.TempMobile_Number}
+                name="tempmobile_number"
+                value={user_info.tempmobile_number}
                 placeholder="Enter your Mobile number"
                 onChange={handleChange}
             />
             <br></br>
             <input
                 type="number"
-                name="age"
-                value={user.TempAge}
+                name="tempage"
+                value={user_info.tempage}
                 placeholder="Enter your Age"
                 onChange={handleChange}
             />
             <br></br>
             <input
                 type="text"
-                name="email"
-                value={user.TempEmail}
+                name="tempemail"
+                value={user_info.tempemail}
                 placeholder="Enter your Email"
                 onChange={handleChange}
-            /> <br></br>
-            {/* <input
-                type="text"
-                name="user_id"
-                hidden
-            /><br></br> */}
+            /> <br></br><br></br>
             <input
                 type="button"
+                value="Back"
                 onClick={() => history.push("/")}
-            />Back
+            />
             <input
                 type="button"
-                onClick={() => history.push("/your_education_info")}
-            />Next
+                value="Add Data"
+                onClick={personal_info}
+            />
+            <input
+                type="button"
+                value="Next"
+                onClick={(personal_info) => history.push("/your_education_info")} />
 
         </div>
 
