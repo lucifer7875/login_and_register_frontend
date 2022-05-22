@@ -38,8 +38,6 @@ const Personal_Info = ({ setPersonal_InfoUser }) => {
     }
 
     console.log(JSON.parse(localStorage.getItem("user_values")))
-    const idField = document.querySelector('[name = "user_id"]')
-    // console.log(idField)
 
     return (
         <div className="Personal_Info" >

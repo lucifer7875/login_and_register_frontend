@@ -9,6 +9,8 @@ import Hobbis from './components/hobbis/hobbis';
 import Resume from './components/resume/resume';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+import React, { Component } from 'react';
+// import logo from './logo.svg';
 
 
 function App() {
